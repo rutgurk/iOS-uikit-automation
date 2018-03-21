@@ -36,4 +36,14 @@ class UIKitCatalogUITests: XCTestCase {
         app.alerts["A Short Title is Best"].buttons["OK"].tap()
     }
     
+    func testRecordingAfterAddingIdentifiers() {
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        XCTAssertEqual(tablesQuery.staticTexts["textLabelalertControllerId"].label, "Alert Controller")
+        tablesQuery.cells["cellalertControllerId"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Simple"]/*[[".cells.staticTexts[\"Simple\"]",".staticTexts[\"Simple\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertEqual(app.alerts["A Short Title is Best"].label, "A Short Title is Best")
+        app.alerts["A Short Title is Best"].buttons["OK"].tap()
+    }
+    
 }
