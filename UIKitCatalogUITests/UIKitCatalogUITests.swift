@@ -28,9 +28,12 @@ class UIKitCatalogUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testRecording() {
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Alert Controller"]/*[[".cells.staticTexts[\"Alert Controller\"]",".staticTexts[\"Alert Controller\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Simple"]/*[[".cells.staticTexts[\"Simple\"]",".staticTexts[\"Simple\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["A Short Title is Best"].buttons["OK"].tap()
     }
     
 }
