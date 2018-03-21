@@ -14,27 +14,28 @@ class MasterViewController: BaseTableViewController {
 		var title: String
 		var subTitle: String
 		var twoLevel: Bool
+        var accessibilityIdentifier: String
 	}
 
     var exampleList = [
-		Example(title: "Activity Indicators", subTitle: "ActivityIndicatorViewController", twoLevel: false),
-		Example(title: "Alert Controller", subTitle: "AlertControllerViewController", twoLevel: false),
-		Example(title: "Buttons", subTitle: "ButtonViewController", twoLevel: false),
-		Example(title: "Date Picker", subTitle: "DatePickerController", twoLevel: false),
-		Example(title: "Image View", subTitle: "ImageViewController", twoLevel: false),
-		Example(title: "Page Control", subTitle: "PageControlViewController", twoLevel: false),
-		Example(title: "Picker View", subTitle: "PickerViewController", twoLevel: false),
-		Example(title: "Progress Views", subTitle: "ProgressViewController", twoLevel: false),
-		Example(title: "Search", subTitle: "SearchViewControllers", twoLevel: true),
-		Example(title: "Segmented Controls", subTitle: "SegmentedControlViewController", twoLevel: false),
-		Example(title: "Sliders", subTitle: "SliderViewController", twoLevel: false),
-		Example(title: "Stack Views", subTitle: "StackViewController", twoLevel: false),
-		Example(title: "Steppers", subTitle: "StepperViewController", twoLevel: false),
-		Example(title: "Switches", subTitle: "SwitchViewController", twoLevel: false),
-		Example(title: "Text Fields", subTitle: "TextFieldViewController", twoLevel: false),
-		Example(title: "Text View", subTitle: "TextViewController", twoLevel: false),
-		Example(title: "Toolbars", subTitle: "ToolbarViewControllers", twoLevel: true),
-		Example(title: "Web View", subTitle: "WebViewController", twoLevel: false)
+        Example(title: "Activity Indicators", subTitle: "ActivityIndicatorViewController", twoLevel: false, accessibilityIdentifier: "activityIndicatorsId"),
+		Example(title: "Alert Controller", subTitle: "AlertControllerViewController", twoLevel: false, accessibilityIdentifier: "alertControllerId"),
+		Example(title: "Buttons", subTitle: "ButtonViewController", twoLevel: false, accessibilityIdentifier: "buttonsId"),
+		Example(title: "Date Picker", subTitle: "DatePickerController", twoLevel: false, accessibilityIdentifier: "datePickerId"),
+		Example(title: "Image View", subTitle: "ImageViewController", twoLevel: false, accessibilityIdentifier: "imageViewId"),
+		Example(title: "Page Control", subTitle: "PageControlViewController", twoLevel: false, accessibilityIdentifier: "pageControlId"),
+		Example(title: "Picker View", subTitle: "PickerViewController", twoLevel: false, accessibilityIdentifier: "pickerViewerId"),
+		Example(title: "Progress Views", subTitle: "ProgressViewController", twoLevel: false, accessibilityIdentifier: "progressViewsId"),
+		Example(title: "Search", subTitle: "SearchViewControllers", twoLevel: true, accessibilityIdentifier: "searchId"),
+		Example(title: "Segmented Controls", subTitle: "SegmentedControlViewController", twoLevel: false, accessibilityIdentifier: "segmentedControlsId"),
+		Example(title: "Sliders", subTitle: "SliderViewController", twoLevel: false, accessibilityIdentifier: "slidersId"),
+		Example(title: "Stack Views", subTitle: "StackViewController", twoLevel: false, accessibilityIdentifier: "stackViewsId"),
+		Example(title: "Steppers", subTitle: "StepperViewController", twoLevel: false, accessibilityIdentifier: "steppersId"),
+		Example(title: "Switches", subTitle: "SwitchViewController", twoLevel: false, accessibilityIdentifier: "switchesId"),
+		Example(title: "Text Fields", subTitle: "TextFieldViewController", twoLevel: false, accessibilityIdentifier: "textFieldsId"),
+		Example(title: "Text View", subTitle: "TextViewController", twoLevel: false, accessibilityIdentifier: "textViewId"),
+		Example(title: "Toolbars", subTitle: "ToolbarViewControllers", twoLevel: true, accessibilityIdentifier: "toolbarsId"),
+		Example(title: "Web View", subTitle: "WebViewController", twoLevel: false, accessibilityIdentifier: "webViewId")
     ]
 
 	override func isTwoLevelCell(indexPath: IndexPath) -> Bool {
@@ -70,7 +71,9 @@ extension MasterViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		let example = exampleList[indexPath.row]
 		cell.textLabel?.text = example.title
+        cell.textLabel?.accessibilityIdentifier = "textLabel"+example.accessibilityIdentifier
 		cell.detailTextLabel?.text = example.subTitle
+        cell.accessibilityIdentifier = "cell"+example.accessibilityIdentifier
 		return cell
 	}
 }
